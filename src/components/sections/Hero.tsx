@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
             <div className="absolute top-0 -right-4 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
             <div className="relative">
               <img
-                src="/assets/images/hero-image.png"
+                src="/final.png"
                 alt="Anshika Gupta"
                 className="rounded-lg w-full max-w-md mx-auto"
               />
