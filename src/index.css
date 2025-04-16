@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-sans text-gray-100 bg-dark dark:bg-dark;
+    @apply font-sans text-gray-100 bg-blue-900 dark:bg-blue-900;
   }
   
   h1, h2, h3, h4 {
@@ -36,10 +36,22 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-light;
+    @apply bg-blue-300 text-blue-900 hover:bg-blue-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-blue-700 text-blue-100 hover:bg-blue-600;
   }
   
   .container-section {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+  }
+  
+  .card {
+    @apply bg-blue-800 rounded-lg p-6 shadow-lg;
+  }
+  
+  .card-light {
+    @apply bg-blue-100 rounded-lg p-6 shadow-lg;
   }
 }
