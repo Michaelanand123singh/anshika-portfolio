@@ -11,7 +11,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ project }) => {
     <Card className="overflow-hidden group transition-all duration-300 hover:shadow-xl">
       <div className="relative overflow-hidden">
         <img 
-          src={project.image} 
+          src={project.src} 
           alt={project.title} 
           className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
         />

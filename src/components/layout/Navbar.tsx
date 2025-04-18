@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
                 role="img" 
                 aria-label="Website logo"
               >
-                Logo.
+                Anshika Gupta
               </span>
             </a>
             
