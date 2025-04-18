@@ -37,4 +37,24 @@ export const projects: Project[] = [
     codeLink: '#',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Figma'],
   },
+  {
+    id: 5,
+    title: 'Landing pages',
+    description: 'Educational platform for teaching web design fundamentals',
+    src: '/projects/landing-page.jpg',
+    demoLink: 'https://www.figma.com/proto/s3oHQc96e9cJTwXi98MlPG/Landing-pages-work-sample?page-id=0%3A1&node-id=1-13025&p=f&viewport=-16%2C255%2C0.04&t=qS6j9aSqGdyBnEPp-1&scaling=min-zoom&content-scaling=fixed',
+    codeLink: '#',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Figma'],
+  },
+  {
+    id: 6,
+    title: 'Landing pages',
+    description: 'Educational platform for teaching web design fundamentals',
+    src: '/projects/landing-page.jpg',
+    demoLink: '#',
+    codeLink: '#',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Figma'],
+  },
+
+
 ];
