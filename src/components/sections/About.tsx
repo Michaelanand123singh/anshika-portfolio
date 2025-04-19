@@ -16,6 +16,32 @@ const About: React.FC = () => {
     skills: ["User Research", "Wireframing", "Prototyping", "Visual Design"]
   };
 
+  // Scroll handler function - extract to avoid inline function creation on each render
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Schema.org structured data
+  const schemaData = {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Anshika Gupta",
+    "jobTitle": "UX/UI Designer",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": education.institution,
+      "sameAs": "https://www.nid.edu/" // Replace with actual URL
+    },
+    "knowsAbout": ["User Experience Design", "Interface Design", "Prototyping", "User Research"],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "UX/UI Designer",
+      "occupationField": experience.field,
+      "experienceYears": experience.years
+    }
+  };
+
   return (
     <section 
       id="about" 
@@ -25,6 +51,12 @@ const About: React.FC = () => {
       itemType="http://schema.org/Person"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <header className="mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold" itemProp="name">
+            About <span className="text-primary">Me</span>
+          </h2>
+        </header>
+        
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Profile Image with optimized alt text and loading */}
           <div className="lg:w-1/2">
@@ -44,15 +76,9 @@ const About: React.FC = () => {
           
           {/* About Content with structured semantic markup */}
           <div className="lg:w-1/2">
-            <header>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8" itemProp="name">
-                About <span className="text-primary">Me</span>
-              </h2>
-            </header>
-            
             <div itemProp="description">
               <p className="text-gray-300 mb-6">
-                Hi, I'm <span itemProp="givenName">Anshika</span> <span itemProp="familyName">Gupta</span>, a professional 
+                Hi, I'm <span itemProp="givenName">Anshika</span> <span itemProp="familyName">Gupta</span>, a professional
                 <span itemProp="jobTitle"> UX/UI Designer</span> with a passion for creating dynamic and responsive user interfaces. 
                 I have extensive experience in user research, interaction design, prototyping, and visual design.
               </p>
@@ -75,6 +101,7 @@ const About: React.FC = () => {
                 <div className="text-gray-300">
                   <p itemProp="degree">{education.degree}</p>
                   <p itemProp="name">{education.institution}</p>
+                  <p>{education.yearCompleted}</p>
                   <meta itemProp="endDate" content={education.yearCompleted} />
                 </div>
               </div>
@@ -96,24 +123,18 @@ const About: React.FC = () => {
             </div>
             
             {/* Call to Action */}
-            <div className="mt-8 flex space-x-4">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a 
                 href="#portfolio" 
                 className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors duration-300"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={(e) => handleSmoothScroll(e, '#portfolio')}
               >
                 View My Work
               </a>
               <a 
                 href="#contact" 
                 className="px-6 py-3 bg-transparent border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors duration-300"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={(e) => handleSmoothScroll(e, '#contact')}
               >
                 Contact Me
               </a>
@@ -123,26 +144,10 @@ const About: React.FC = () => {
       </div>
       
       {/* Schema.org data for SEO */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "http://schema.org",
-          "@type": "Person",
-          "name": "Anshika Gupta",
-          "jobTitle": "UX/UI Designer",
-          "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": education.institution,
-            "sameAs": "https://www.nid.edu/" // Replace with actual URL
-          },
-          "knowsAbout": ["User Experience Design", "Interface Design", "Prototyping", "User Research"],
-          "hasOccupation": {
-            "@type": "Occupation",
-            "name": "UX/UI Designer",
-            "occupationField": experience.field,
-            "experienceYears": experience.years
-          }
-        })
-      }} />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} 
+      />
     </section>
   );
 };
