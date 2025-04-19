@@ -12,6 +12,10 @@ const ContactForm: React.FC = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   
+  // Replace with your WhatsApp number including country code
+  // Example: 911234567890 for India number +91 12345 67890
+  const whatsappNumber = '+91 7371083339'; 
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -29,13 +33,21 @@ const ContactForm: React.FC = () => {
     setSuccess(false);
     
     try {
-      // Replace with your actual form submission logic
-      // This is a mock submission with a timeout
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Create a message for WhatsApp with proper formatting
+      const message = `*Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
       
-      // Mock successful submission
+      // Create WhatsApp API URL - note we're using direct encoding instead of encodeURIComponent
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+      
+      // Mark as successful
       setSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      
+      // Short delay before redirect so user sees success message
+      setTimeout(() => {
+        // Open WhatsApp in a new tab
+        window.open(whatsappUrl, '_blank');
+        setFormData({ name: '', email: '', message: '' });
+      }, 500);
     } catch (err) {
       setError('Something went wrong. Please try again later.');
     } finally {
@@ -88,7 +100,7 @@ const ContactForm: React.FC = () => {
       </div>
       
       {error && <p className="text-red-500 text-sm">{error}</p>}
-      {success && <p className="text-green-500 text-sm">Message sent successfully!</p>}
+      {success && <p className="text-green-500 text-sm">Redirecting to WhatsApp...</p>}
       
       <Button 
         type="submit" 

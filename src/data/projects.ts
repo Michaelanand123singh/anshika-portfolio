@@ -48,9 +48,9 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    title: 'Landing pages',
+    title: 'Le.nature',
     description: 'Educational platform for teaching web design fundamentals',
-    src: '/projects/landing-page.jpg',
+    src: '/projects/le-nature.png',
     demoLink: '#',
     codeLink: '#',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Figma'],

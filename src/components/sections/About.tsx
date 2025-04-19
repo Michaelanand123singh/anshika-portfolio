@@ -3,15 +3,15 @@ import React from 'react';
 const About: React.FC = () => {
   // Education details with structured data
   const education = {
-    degree: "Bachelor of Design",
-    institution: "National Institute of Design",
-    yearCompleted: "2021",
+    degree: "B.Com (Hons)",
+    institution: "Delhi University",
+    yearCompleted: "2021 - 2024",
     fieldOfStudy: "UI/UX Design"
   };
 
   // Experience details with structured data
   const experience = {
-    years: "2+",
+    years: "1+",
     field: "UI/UX Design",
     skills: ["User Research", "Wireframing", "Prototyping", "Visual Design"]
   };
