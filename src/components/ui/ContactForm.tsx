@@ -14,7 +14,7 @@ const ContactForm: React.FC = () => {
   
   // Replace with your WhatsApp number including country code
   // Example: 911234567890 for India number +91 12345 67890
-  const whatsappNumber = '+91 7371083339'; 
+  const whatsappNumber = '+91 '; 
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
